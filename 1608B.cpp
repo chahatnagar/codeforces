@@ -3,57 +3,72 @@ using namespace std;
 #define endl "\n"
 #define int long long
 void solve(){
-    int n, a, b; cin >> n >> a >> b;
-    if(abs(a-b)>1){
-    	cout << -1;
-    	return;
+    int n, a, b;
+    cin >> n >> a >> b;
+
+    if((a+b>n-2) || abs(a-b)>1) 
+    {
+        cout << -1;
+        return;
     }
-   	if(b>a){
-   		int c = 0;
-   		int max1 = (n/2)+b;
-   		int min1 = 1;
-   		for (int i = 0; i < (2*b)+1; ++i)
-   		{
-   			// cout << 1 << endl;
-   			if(c%2==0){
-   				cout << max1 << " ";
-   				max1--;
-   			}
-   			if(c%2){
-   				cout << min1 << " ";
-   				min1++;
-   			}
-   			c++;
-   		}
-   		for (int i = ((n/2)+b)+1; i <= n; ++i)
-   		{
-   			cout << i << " ";
-   		}
-   	}
-    
-    if(a>=b){
-   		int c = 1;
-   		int max1 = (n/2)+a;
-   		cout << max1 << endl;
-   		int min1 = 1;
-   		for (int i = 0; i < (2*a)+1; ++i)
-   		{
-   			// cout << 1 << endl;
-   			if(c%2==0){
-   				cout << max1 << " ";
-   				max1--;
-   			}
-   			if(c%2){
-   				cout << min1 << " ";
-   				min1++;
-   			}
-   			c++;
-   		}
-   		for (int i = ((n/2)+a)+1; i <= n; ++i)
-   		{
-   			cout << i << " ";
-   		}
-   	}
+
+    vector<int> ans(n);
+    if(a > b)
+    {
+        int curr = n;
+        for (int i = 1, cnt = 0; cnt < a; i+=2, cnt++)
+        {
+            ans[i] = curr;
+            curr--;
+        }
+        int right = curr;
+        curr = 1;
+        for(int i = 2, cnt = 0; cnt < b; i+=2, cnt++)
+        {
+            ans[i] = curr;
+            curr++; 
+        }
+        ans[0] = right--;
+        for(int i = a+b+1; i < n; i++) ans[i] = right--;
+    }
+    else if(a < b){
+        int curr = 1;
+        for (int i = 1, cnt = 0; cnt < b; i+=2, cnt++)
+        {
+            ans[i] = curr; 
+            curr++;
+        }
+        int left = curr;
+        curr = n;
+        for(int i = 2, cnt = 0; cnt < a; i+=2, cnt++)
+        {
+            ans[i] = curr;
+            curr--;
+        }
+
+        ans[0] = left++;
+        for(int i = a+b+1; i < n; i++) ans[i] = left++;
+    }else{
+        int curr = n;
+        for(int i = 1, cnt = 0; cnt < a; i+=2, cnt++)
+        {
+            ans[i] = curr;
+            curr--;
+        }
+        curr = 1;
+        for(int i = 2, cnt = 0; cnt < b; i+=2, cnt++)
+        {
+            ans[i] = curr;
+            curr++;
+        }
+        int left = curr;
+        ans[0] = left++;
+        for(int i = a+b+1; i < n; i++) ans[i] = left++;
+    }
+
+    for(int i = 0; i < n; i++) cout << ans[i] << " ";
+
+
     
 }
 int32_t main()

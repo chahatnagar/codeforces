@@ -1,32 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl "\n"
-#define int long long
+// #define int long long
+bool sqrcheck(int a)
+{
+	int y = sqrt(a);
+    return (y*y==a);
+}
 void solve(){
     int n;
     cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
+    int a = n/4, b = n/2;
+    if((sqrcheck(a) && n%4==0) || (sqrcheck(b) && n%2==0))
     {
-    	int x; cin >> x;
-    	m[i] = x;
-
+    	cout << "YES";
+    	return;
     }
-
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
-    }
-
-
+    cout << "NO";
 }
 int32_t main()
 {
@@ -37,6 +27,11 @@ int32_t main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif // ONLINE_JUDGE
-    solve();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+        cout << endl;
+    }
     return 0;
 }

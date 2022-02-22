@@ -3,28 +3,18 @@ using namespace std;
 #define endl "\n"
 #define int long long
 void solve(){
-    int n;
+    int n, ans = 0;
     cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
-    {
-    	int x; cin >> x;
-    	m[i] = x;
 
+    for(int i = 0; i < n; i++)
+    {
+    	int x;
+    	cin >> x;
+    	ans = (ans|x);
     }
 
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
+    cout << ans;
 
-    	cout << curr << " ";
-    }
 
 
 }
@@ -37,6 +27,11 @@ int32_t main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif // ONLINE_JUDGE
-    solve();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+        cout << endl;
+    }
     return 0;
 }

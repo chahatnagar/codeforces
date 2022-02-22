@@ -1,39 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl "\n"
-// #define int long long
+#define int long long
 void solve(){
-    int n, m;
+    int n, os = 0, es = 0, oc = 0, ec = 0;
     cin >> n;
-    vector<int> v1(n);
-    for(int &i : v1)
+    vector<int> v(n);
+
+    for (int i = 0; i < n; ++i)
     {
-        cin >> i;
+    	int x;
+    	cin >> x;
+    	v[i] = x;
+    	if(i!=0 && i!=n-1)
+    	{
+    		if(x%2)
+    		{
+    			os+=(x+1);
+    			oc++;
+    		}
+    		else
+    		{
+    			es+=(x);
+    			ec++;
+    		}
+    	}
+    	
     }
 
-    cin >> m;
-    vector<int> v2(m);
-    for(int &i : v2)
+    if((oc==1 && ec==0) || (oc*2==os && ec==0))
     {
-        cin >> i;
-    }
-    int m1 = 0, c1 = 0;
-
-    for(int i : v1)
-    {
-        c1+=i;
-        m1 = max(m1, c1);
+    	cout << -1;
+    	return;
     }
 
-    int m2 = 0, c2 = 0;
-
-    for(int i : v2)
-    {
-        c2+=i;
-        m2 = max(m2, c2);
-    }
-
-    cout << m1+m2;
+    cout << (os/2)+(es/2);
 
 
 

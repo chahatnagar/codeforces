@@ -5,28 +5,7 @@ using namespace std;
 void solve(){
     int n;
     cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
-    {
-    	int x; cin >> x;
-    	m[i] = x;
-
-    }
-
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
-    }
-
-
+    cout << ceil((1+ceil((n+2)/2))/2);
 }
 int32_t main()
 {
@@ -37,6 +16,11 @@ int32_t main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif // ONLINE_JUDGE
-    solve();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+        cout << endl;
+    }
     return 0;
 }

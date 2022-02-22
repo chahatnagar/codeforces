@@ -3,29 +3,19 @@ using namespace std;
 #define endl "\n"
 #define int long long
 void solve(){
-    int n;
-    cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
-    {
-    	int x; cin >> x;
-    	m[i] = x;
+    int a, b, c;
+    cin >> a >> b >> c;
+    int A = a, B = b, C = c;
+	
+	A = (((((sqrt(a*b*c))/A))));
+	B = (((((sqrt(a*b*c))/B))));
+	C = (((((sqrt(a*b*c))/C))));
+	// cout << A << " " << B << " " << C;
+	cout << 4*(A+B+C);
+// ((((sqrt(a*b*c))/b)))+((((sqrt(a*b*c))/c))));
 
-    }
 
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
-    }
-
+    
 
 }
 int32_t main()

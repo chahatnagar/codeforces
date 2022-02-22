@@ -3,30 +3,10 @@ using namespace std;
 #define endl "\n"
 #define int long long
 void solve(){
-    int n;
-    cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
-    {
-    	int x; cin >> x;
-    	m[i] = x;
-
-    }
-
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
-    }
-
-
+    int a, b;
+    int ans = 0;
+    cin >> a >> b;
+    cout << min({a, b, (a+b)/3});
 }
 int32_t main()
 {
@@ -37,6 +17,11 @@ int32_t main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif // ONLINE_JUDGE
-    solve();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+        cout << endl;
+    }
     return 0;
 }

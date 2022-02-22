@@ -3,30 +3,25 @@ using namespace std;
 #define endl "\n"
 #define int long long
 void solve(){
-    int n;
-    cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
-    {
-    	int x; cin >> x;
-    	m[i] = x;
+    string s;
+    cin >> s;
 
+    if(s.length()%2)
+    {
+    	cout << "NO";
+    	return;
+    }
+    if(s[0]==')'){
+    	cout << "NO";
+    	return;
+    }
+    if(s[s.size()-1]=='(')
+    {
+    	cout << "NO";
+    	return;
     }
 
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
-    }
-
-
+    cout << "YES";
 }
 int32_t main()
 {
@@ -37,6 +32,11 @@ int32_t main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif // ONLINE_JUDGE
-    solve();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+        cout << endl;
+    }
     return 0;
 }

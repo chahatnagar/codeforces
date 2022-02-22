@@ -5,28 +5,18 @@ using namespace std;
 void solve(){
     int n;
     cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
+    int arr[n];
+    for(int &i : arr)
     {
-    	int x; cin >> x;
-    	m[i] = x;
-
+    	cin >> i;
     }
 
-    for (int i = 1; i <= n; ++i)
+    sort(arr, arr+n, greater<int>());
+
+    for(int i : arr)
     {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
+    	cout << i << " ";
     }
-
-
 }
 int32_t main()
 {
@@ -37,6 +27,11 @@ int32_t main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif // ONLINE_JUDGE
-    solve();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+        cout << endl;
+    }
     return 0;
 }

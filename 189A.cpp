@@ -1,32 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl "\n"
-#define int long long
+// #define int long long
 void solve(){
-    int n;
-    cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
+    int n, a, b, c;
+    cin >> n >> a >> b >> c;
+    int ans = INT_MIN;
+    for (int i = 0; i <= 4000; ++i)
     {
-    	int x; cin >> x;
-    	m[i] = x;
-
-    }
-
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
+    	for (int j = 0; j <= 4000; ++j)
     	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
+    		float cz = (n - ((a*i)+(b*j)));
 
-    	cout << curr << " ";
+    		if(cz<0) break;
+
+    		float z = cz/((float)c);
+    		if(z == (int)z)
+    		{
+    			ans = max(ans, i+j+(int)z);
+    		}
+    	}
     }
 
-
+    cout << ans;
 }
 int32_t main()
 {

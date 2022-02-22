@@ -28,36 +28,37 @@ int dp2[100001][10];
 // 	}
 
 // }
-bool help(int x, int n, int count, vector<int> &arr, int y)
-{
-	if(count==n)
-	{
-		if(x==y) return 1;
-		else return 0;
-	}
+// bool help(int x, int n, int count, vector<int> &arr, int y)
+// {
+// 	if(count==n)
+// 	{
+// 		if(x==y) return 1;
+// 		else return 0;
+// 	}
 
-	int n1 = help(x+arr[count], n, count+1, arr, y);
-	int n2 = help((x^(arr[count])), n, count+1, arr, y);
-	bool ans = false;
-	if(n1==1 || n2==1)
-	{
-		ans = true;
-	}
-	return ans;
+// 	int n1 = help(x+arr[count], n, count+1, arr, y);
+// 	int n2 = help((x^(arr[count])), n, count+1, arr, y);
+// 	bool ans = false;
+// 	if(n1==1 || n2==1)
+// 	{
+// 		ans = true;
+// 	}
+// 	return ans;
 
 
-}
+// }
 void solve(){
-    int n, x, y; cin >> n >> x >> y;
+    int n, x, y, sum = 0; cin >> n >> x >> y;
     vector<int> arr(n);
     for(int &i : arr)
     {
     	cin >> i;
+        sum += i;
     }
-    if(help(x, n, 0, arr, y))
-    {
-    	cout << "Alice";
-    }else cout << "Bob";
+    
+
+    if((sum%2) == (max(x,y)-min(x,y))%2) cout << "Alice";
+    else cout << "Bob";
 
     
 

@@ -2,31 +2,15 @@
 using namespace std;
 #define endl "\n"
 #define int long long
+int ans(int n)
+{
+	return (n*(n-1))/2;
+}
 void solve(){
-    int n;
-    cin >> n;
-    map<int, int> m;
-    for (int i = 1; i <= n; ++i)
-    {
-    	int x; cin >> x;
-    	m[i] = x;
+    int n, m;
+    cin >> n >> m;
 
-    }
-
-    for (int i = 1; i <= n; ++i)
-    {
-    	map<int, int> m2;
-    	int curr = i;
-    	while(m2[curr]!=2)
-    	{
-    		m2[curr]++;
-    		curr = m[curr];
-    	}
-
-    	cout << curr << " ";
-    }
-
-
+    cout << (n%m)*ans((n/m)+1)+(m - n%m)*(ans(n/m)) << " " << ans(n-m+1);
 }
 int32_t main()
 {
